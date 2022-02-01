@@ -678,26 +678,24 @@ Di direktori task, buat beberapa file bernama main.yml. Kemudian ketikkan script
   notify:
     - restart php
 ```
-Di direktori handler, buat beberapa file bernama main.yml. Kemudian ketikkan script seperti di bawah ini.
+
+
+
+
+
+
+
+
+
+
+buat directory codeigniter dengan roles directory ```sudo mkdir codeigniter``` untuk mengakomidasikan sebuah ansible script untuk menginstall codeigniter framework.
+- Pada direktori codeigniter, kita membutuhkan 3 folder lagi untuk menampung tasks, handler dan script template yang akan digunakan dalam menginstall codeigniter.
+
 ```
----
-- name: restart php
-  become: yes
-  become_user: root
-  become_method: su
-  action: service name=php7.4-fpm state=restarted
-
-- name: restart nginx
-  become: yes
-  become_user: root
-  become_method: su
-  action: service name=nginx state=restarted
+sudo mkdir -p codeigniter/tasks
+sudo mkdir -p codeigniter/handlers
+sudo mkdir -p codeigniter/templates
 ```
-
-
-
-
-
 
 Install mariadb pada LXC_DB_SERVER dan CodeIgniter 3 pada LXC_CI dengan ansible
 
