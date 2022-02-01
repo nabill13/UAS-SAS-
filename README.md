@@ -97,7 +97,7 @@ Install latest wordpress pada LXC_WORDPRESS dengan ansible
 
 
 
-Install YII 2.0 on LXC_YII with ansible
+Install YII 2.0 on LXC_YII dengan ansible
 
 *link ansible*
 
@@ -107,8 +107,7 @@ Install YII 2.0 on LXC_YII with ansible
 
 
 
-Copy LXC earlier on steps 1, like architecture like
-
+copy LXC sebelumnya, seperti arsitektur 
 
 
 
