@@ -121,11 +121,24 @@ nano main.yml
 
 *picture 1*
 
-setelah itu ketikkan perintah 
+setelah itu tulis perintah 
  ```
  cd ../templates
 nano app.conf
 ```
+
+*picture*
+
+setelah itu tulis perintah 
+
+```
+cd ../handlers
+nano main.yml
+```
+
+*picture*
+
+
 
 
 
