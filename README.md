@@ -31,80 +31,24 @@ kemudian, buat ansible codeiginiter dengan nama deploy-app.yml yang berisi domai
 
 <img width="481" alt="6" src="https://user-images.githubusercontent.com/92876637/151708105-684fbfdf-df88-441e-9aa0-7acd476eb0a3.PNG">
 
+kemudian install ci, laravel, wordpress, yii dan mariadb
 
 ```
-- hosts: ci
-  vars:
-    git_url: 'https://github.com/aldonesia/sas-ci'
-    destdir: '/var/www/html/ci'
-    domain: 'lxc_php5_1.dev'
-    domain: 'lxc_php5_2.dev'
-  roles:
-    - app
+nano install-ci.yml //for code igniter
+nano install-laravel.yml //for laravel
+nano install-wp.yml //for wordpress
+nano install-yii.yml //for yii2.0
+nano install-mariadb.yml //for phpmyadmin
 ```
 
-*picture*
+*Install WordPress*
+<img width="481" alt="install wp" src="https://user-images.githubusercontent.com/92932656/152006345-92221ff8-11ca-4b97-85d2-1de041e81e0f.PNG">
 
+*Install yii*
+<img width="482" alt="install yii" src="https://user-images.githubusercontent.com/92932656/152006473-784207e0-e9c0-421a-afa0-fe3580ffce98.PNG">
 
-
-kemudian, jalankan Ansible
-
-*picture*
-
-
-
-Install mariadb pada LXC_DB_SERVER dan CodeIgniter 3 pada LXC_CI dengan ansible
-
-*link ansible*
-
-*picture 1*
-
-*picture 2*
-
-*picture 3*
-
-*picture 4*
-
-
-
-Install laravel 8 pada LXC_LARAVEL dengan ansible
-
-*link ansible*
-
-*picture 1*
-
-*picture 2*
-
-*picture 3*
-
-*picture 4*
-
-
-
-Install latest wordpress pada LXC_WORDPRESS dengan ansible
-
-*link ansible*
-
-*picture 1*
-
-*picture 2*
-
-*picture 3*
-
-*picture 4*
-
-*picture 5*
-
-
-
-Install YII 2.0 on LXC_YII dengan ansible
-
-*link ansible*
-
-*picture 1*
-
-*picture 2*
-
+*Install mariadb*
+<img width="480" alt="install mariadb" src="https://user-images.githubusercontent.com/92932656/152006534-4ff7d8f6-b580-4a1d-b84b-2e1eb89e1c4b.PNG">
 
 
 copy LXC sebelumnya, seperti arsitektur 
