@@ -825,8 +825,9 @@ sudo mkdir -p codeigniter/templates
       }
       ```
 
-  - buat sebuah db directory pada roles directory `sudo mkdir db` untuk akomodaikan sebuah ansible script saat install db framewrok.  
-    - In the db dircetory, we need 3 folders again to accommodate tasks, handlers and templates scripts that will be use in the db installation.
+  - buat sebuah db directory pada roles directory `sudo mkdir db` untuk akomodaikan ansible script untuk menginstall db framework.
+    - pada direktori db, kita membutuhkan 3 folder lagi untuk menampung skrip tasks, direktori db, kita membutuhkan 3 folder lagi untuk menampung skrip tasks,
+    handler dan template yang akan digunakan dalam instalasi db.
 
       ```
       sudo mkdir -p db/tasks
@@ -834,7 +835,7 @@ sudo mkdir -p codeigniter/templates
       sudo mkdir -p db/templates
       ```
 
-    - In the tasks directory, create some file named main.yml. Then type the script as below.
+    - pada tasks direcory, buat beberapa file dengan nama main.yml. kemudian ketikkan perintah berikut :
 
       ```
       ---
