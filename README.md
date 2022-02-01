@@ -1229,7 +1229,7 @@ sudo mkdir -p codeigniter/templates
       sudo mkdir -p wordpress /templates
       ```
 
-    - In the tasks directory, create some file named main.yml. Then type the script as below.
+    - pada tasks directory, buat file bernama main.yml, lalu tulis perintah berikut :
 
       ```
       ---
@@ -1313,7 +1313,7 @@ sudo mkdir -p codeigniter/templates
           - restart php
       ```
 
-    - In the handlers directory, create some file named main.yml. Then type the script as below.
+    - Pada handler directory, buat file bernama main.yml, lalu tulis perintah berikut :
 
       ```
       ---
@@ -1330,7 +1330,7 @@ sudo mkdir -p codeigniter/templates
         action: service name=php7.4-fpm state=restarted
       ```
 
-    - In the templates directory, we will create 3 script files as below.
+    - Pada templates directory, kita akan membuat 3 file script seperti dibawah ini :
 
       - php7.conf
 
@@ -1867,7 +1867,7 @@ sudo mkdir -p codeigniter/templates
       sudo mkdir -p yii /templates
       ```
 
-    - In the tasks directory, create some file named main.yml. Then type the script as below.
+    - Pada tasks directory, buat file bernama main.yml, lalu tulis perintah berikut :
 
       ```
       ---
@@ -1933,7 +1933,7 @@ sudo mkdir -p codeigniter/templates
           state: present
       ```
 
-    - In the handlers directory, create some file named main.yml. Then type the script as below.
+    - In the handlers directory, buat file bernama main.yml, lalu tulis perintah berikut :
 
       ```
       ---
@@ -1950,7 +1950,7 @@ sudo mkdir -p codeigniter/templates
         action: service name=nginx state=restarted
       ```
 
-    -  In the templates directory, create some file named yii.conf. Then type the script as below.
+    -  Pada templates directory, buat file bernama yii.conf, lalu tulis perintah berikut :
 
       ```
       server {
@@ -2004,9 +2004,9 @@ sudo mkdir -p codeigniter/templates
       }
       ```
 
-- After that, we need to create some file to running the configuration that was we made in the roles directory.
-
-  - Create file named hosts `nano hosts` and type script as below.
+- Setelah itu, kita perlu membuat beberapa file untuk menjalankan konfigurasi yang telah kita buat di direktori roles.
+  
+  - Buat file dengan nama hosts `nano hosts` and tulis perintah di bawah ini:
 
     ```
     [laravel]
@@ -2040,7 +2040,7 @@ sudo mkdir -p codeigniter/templates
     lxc_mariadb ansible_host=lxc_mariadb.dev ansible_ssh_user=root ansible_become_pass=akbar
     ```
 
-  - Create file named install-codeigniter.yml `nano install-codeigniter.yml` and type script as below.
+  - Buat file dengan nama install-codeigniter.yml `nano install-codeigniter.yml` dan tulis perintah seperti di bawah ini:
 
     ```
     ---
@@ -2069,7 +2069,7 @@ sudo mkdir -p codeigniter/templates
         - app
     ```
 
-  - Create file named install-laravel.yml `nano install-laravel.yml` and type script as below.
+  - buat file dengan nama install-laravel.yml `nano install-laravel.yml` dan tulis perintah seperti di bawah ini:
 
     ```
     ---
@@ -2119,7 +2119,7 @@ sudo mkdir -p codeigniter/templates
         - laravel
     ```
 
-  - Create file named install-mariadb.yml `nano install-mariadb.yml` and type script as below.
+  - Create file named install-mariadb.yml `nano install-mariadb.yml` dan tulis perintah seperti di bawah ini:
 
     ```
     - hosts: database
@@ -2132,7 +2132,7 @@ sudo mkdir -p codeigniter/templates
         - pma
     ```
 
-  - Create file named install-wordpress.yml `nano install-wordpress.yml` and type script as below.
+  - Buat file nama install-wordpress.yml `nano install-wordpress.yml` dan tulis perintah seperti di bawah ini:
 
     ```
     ---
@@ -2177,7 +2177,7 @@ sudo mkdir -p codeigniter/templates
         - wordpress
     ```
 
-  - Create file named install-yii.yml `nano install-yii.yml` and type script as below.
+  - Buat file dengan nama install-yii.yml `nano install-yii.yml` dan tulis perintah seperti di bawah ini:
 
     ```
     ---
@@ -2236,7 +2236,9 @@ sudo mkdir -p codeigniter/templates
         - yii
     ```
 
-- Then for the last, we need to configuration the nginx settings. Go to the sites-available `cd /etc/nginx/sites-available` and create file named kelompok12.fpsas. Enter the file using `sudo nano kelompok12.fpsas` and type script as below to settings the nginx include load balancer configurations.
+
+
+- Kemudian untuk yang terakhir, kita perlu mengkonfigurasi pengaturan nginx. Masuk ke situs-tersedia `cd /etc/nginx/sites-available` dan buat file bernama kelompok02.fpsas. Masukkan file menggunakan `sudo nano kelompok12.fpsas` dan ketik script seperti di bawah ini untuk pengaturan konfigurasi nginx include load balancer.
 
   ```
   upstream laravel {
@@ -2314,7 +2316,7 @@ sudo mkdir -p codeigniter/templates
   }
   ```
   
-- Check the script and restart the nginx.
+- Cek script dan restart the nginx.
 
   ```
   sudo nginx -t
@@ -2322,100 +2324,6 @@ sudo mkdir -p codeigniter/templates
   sudo service nginx restart
   ```
 
+- Sekarang, kita dapat mengecek konfigurasi kita di browser dengan ketikkan nama dari domain kita (http://kelompok02.fpsas).
 
-Install latest wordpress pada LXC_WORDPRESS dengan ansible
-
-*link ansible*
-
-<img width="481" alt="install wp" src="https://user-images.githubusercontent.com/92876637/152006638-3915e03f-f952-4f16-b196-850b706f7375.PNG">
-
-
-*picture 2*
-
-*picture 3*
-
-*picture 4*
-
-*picture 5*
-
-
-
-Install YII 2.0 on LXC_YII dengan ansible
-
-*link ansible*
-
-<img width="482" alt="install yii" src="https://user-images.githubusercontent.com/92876637/152006699-8189d217-4392-4634-9f2f-075096d891b8.PNG">
-
-*picture 2*
-
-
-
-copy LXC sebelumnya, seperti arsitektur 
-
-*picture*
-
-
-
-setelah itu tulis perintah berikut 
-```
-cd /roles/ci/tasks
-nano main.yml
-```
-
-*picture 1*
-
-setelah itu tulis perintah 
- ```
- cd ../templates
-nano app.conf
-```
-
-*picture*
-
-setelah itu tulis perintah 
-
-```
-cd ../handlers
-nano main.yml
-```
-
-*picture*
-
-
- setelah ansible Code Igniter, maka kita ke cd task
-
-```
-cd ../../
-cd php/tasks
-nano main.yml
-```
- *picture*
- 
-kemudian masuk ke main.yml dengan perintah
-
-```
-cd ../handlers
-nano main.yml
-```
-
-*picture*
-
-setelah ansible pada php selesai, selanjutnya setting laravel.
-ketikkan perintah berikut 
-
-```
-cd ../../
-cd lv/tasks
-nano main.yml
-```
-*picture*
-
-
-kemudian masuk ke env.template dengan perintah berikut :
-```
-cd ../templates
-nano env.template
-```
-
-*picture*
-
+- laravel (kelompok02.fpsas/)
