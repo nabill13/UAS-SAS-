@@ -678,8 +678,21 @@ Di direktori task, buat beberapa file bernama main.yml. Kemudian ketikkan script
   notify:
     - restart php
 ```
+Di direktori handler, buat beberapa file bernama main.yml. Kemudian ketikkan script seperti di bawah ini.
+```
+---
+- name: restart php
+  become: yes
+  become_user: root
+  become_method: su
+  action: service name=php7.4-fpm state=restarted
 
-
+- name: restart nginx
+  become: yes
+  become_user: root
+  become_method: su
+  action: service name=nginx state=restarted
+```
 
 
 
