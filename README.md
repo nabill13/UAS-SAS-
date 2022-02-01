@@ -150,4 +150,31 @@ nano main.yml
 ```
  *picture*
  
+kemudian masuk ke main.yml dengan perintah
+
+```
+cd ../handlers
+nano main.yml
+```
+
+*picture*
+
+setelah ansible pada php selesai, selanjutnya setting laravel.
+ketikkan perintah berikut 
+
+```
+cd ../../
+cd lv/tasks
+nano main.yml
+```
+*picture*
+
+
+kemudian masuk ke env.template dengan perintah berikut :
+```
+cd ../templates
+nano env.template
+```
+
+*picture*
 
