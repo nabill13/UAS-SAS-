@@ -689,6 +689,7 @@ Di direktori task, buat beberapa file bernama main.yml. Kemudian ketikkan script
 
 
 buat directory codeigniter dengan roles directory ```sudo mkdir codeigniter``` untuk mengakomidasikan sebuah ansible script untuk menginstall codeigniter framework.
+
 - Pada direktori codeigniter, kita membutuhkan 3 folder lagi untuk menampung tasks, handler dan script template yang akan digunakan dalam menginstall codeigniter.
 
 ```
@@ -696,6 +697,114 @@ sudo mkdir -p codeigniter/tasks
 sudo mkdir -p codeigniter/handlers
 sudo mkdir -p codeigniter/templates
 ```
+- Pada Taks directory, buat beberapa file bernama main.yml. dengan script seperti di bawah ini :
+```
+---
+- name: delete apt chache
+  become: yes
+  become_user: root
+  become_method: su
+  command: rm -vf /var/lib/apt/lists/*
+
+- name: install requirement dpkg to install php5
+  become: yes
+  become_user: root
+  become_method: su
+  apt: name={{ item }} state=latest update_cache=true
+  with_items:
+    - ca-certificates
+    - apt-transport-https
+    - wget
+    - curl
+    - python-apt
+    - software-properties-common
+    - git
+
+- name: Add key
+  apt_key:
+    url: https://packages.sury.org/php/apt.gpg
+    state: present
+
+- name: Add Php Repository
+  apt_repository:
+      repo: "deb https://packages.sury.org/php/ stretch main"
+      state: present
+      filename: php.list
+      update_cache: true
+
+- name: wget repository
+  shell: wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+
+- name: add repository
+  shell: echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
+
+- name: apt update
+  shell: apt update
+
+- name: install nginx php5
+  become: yes
+  become_user: root
+  become_method: su
+  apt: name={{ item }} state=latest update_cache=true
+  with_items:
+    - nginx
+    - nginx-extras
+    - php5.6
+    - php5.6-fpm
+    - php5.6-common
+    - php5.6-cli
+    - php5.6-curl
+    - php5.6-mbstring
+    - php5.6-mysqlnd
+    - php5.6-xml
+
+- name: Git clone repo sas-ci
+  become: yes
+  git:
+    repo: '{{ git_url }}'
+    dest: "{{ destdir }}"
+
+- name: Copy app.conf
+  template:
+    src=templates/app.conf
+    dest=/etc/nginx/sites-available/{{ domain }}
+  vars:
+    servername: '{{ domain }}'
+
+- name: Delete another nginx config
+  become: yes
+  become_user: root
+  become_method: su
+  command: rm -f /etc/nginx/sites-enabled/*
+
+- name: Symlink app.conf
+  command: ln -sfn /etc/nginx/sites-available/{{ domain }} /etc/nginx/sites-enabled/{{ domain }}
+  notify:
+    - restart nginx
+
+- name: Write {{ domain }} to /etc/hosts
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '.*{{ domain }}$'
+    line: "127.0.0.1 {{ domain }}"
+    state: present
+ ```
+    
+ - Pada directory handlers, buat beberapa file dengan nama main.yml. dengan script di bawah ini
+ ```
+ ---
+- name: restart php
+  become: yes
+  become_user: root
+  become_method: su
+  action: service name=php7.4-fpm state=restarted
+
+- name: restart nginx
+  become: yes
+  become_user: root
+  become_method: su
+  action: service name=nginx state=restarted
+  ```
 
 Install mariadb pada LXC_DB_SERVER dan CodeIgniter 3 pada LXC_CI dengan ansible
 
