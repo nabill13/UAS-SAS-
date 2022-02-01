@@ -913,8 +913,9 @@ sudo mkdir -p codeigniter/templates
           state: present
       ```
 
-    - In the handlers directory, create some file named main.yml. Then type the script as below.
 
+    - pada handlers directory, buat beberapa file dengan nama main.yml. dan tulis perintah seperti di bawah ini
+    
       ```
       ---
       - name: restart mysql
@@ -924,8 +925,8 @@ sudo mkdir -p codeigniter/templates
         action: service name=mysql state=restarted
       ```
 
-    - In the templates directory,  create some file named my.cnf. Then type the script as below.
-
+    - pada template directory, buat file bernama my.cnf. kemudian tulis perintah seperti berikut :
+    - 
       ```
       #
       # These groups are read by MariaDB server.
@@ -1058,10 +1059,10 @@ sudo mkdir -p codeigniter/templates
       [mariadb]
       ```
 
-    - Then, we need to create a folder named pma to accommodate pma installation in the pma roles. In this roles, we just need to create 3 directory named tasks, handlers and templates.
+    - lalu, kita membuat sebuah folder dengan nama pma untuk menginstall pma dengan roles pma. pada roles, kita harus membuat 3 directory dengan nama tasks, handlers dan      templates.
 
-      - In the tasks directory, create some file named main.yml. Then type the script as below.
-
+      - pada tasks directory, buat file bernama main.yml, lalu tulis perintah berikut :
+     
         ```
         ---
         - name: delete apt chache
@@ -1155,8 +1156,8 @@ sudo mkdir -p codeigniter/templates
             state: present
         ```
 
-      - In the handlers directory, create some file named main.yml. Then type the script as below.
-
+      - pada  handlers directory, buat file bernama main.yml, lalu tulis perintah berikut :
+       
         ```
         ---
         - name: stop apache2
@@ -1178,8 +1179,8 @@ sudo mkdir -p codeigniter/templates
           action: service name=php7.2-fpm state=restarted
         ```
 
-      - In the templates directory, create some file named pma.local . Then type the script as below.
-
+      - pada template directory, buat file bernama main.yml, lalu tulis perintah berikut :
+        
         ```
         server {
             listen 80;
@@ -1218,9 +1219,9 @@ sudo mkdir -p codeigniter/templates
           }
         ```
 
-  - create a wordpress directory in the roles directory `sudo mkdir wordpress` to accommodate an ansible script to install wordpress framewrok.  
+  - buat directory wordpress dengan roles directory `sudo mkdir wordpress` untuk ansible script untuk menginstall wordpress framework
 
-    - In the wordpress dircetory, we need 3 folders again to accommodate tasks, handlers and templates scripts that will be use in the wordpress installation.
+    - Pada wordpress dircetory, kita buat 3 folder lagi untuk mengakomidasikan script tasks, handlers and templates yang akan digunakan dalam instalasi wordpress.
 
       ```
       sudo mkdir -p wordpress /tasks
