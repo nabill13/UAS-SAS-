@@ -141,6 +141,13 @@ nano main.yml
 *picture*
 
 
+ setelah ansible Code Igniter, maka kita ke cd task
 
-
+```
+cd ../../
+cd php/tasks
+nano main.yml
+```
+ *picture*
+ 
 
