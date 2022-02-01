@@ -119,4 +119,13 @@ cd /roles/ci/tasks
 nano main.yml
 ```
 
+*picture 1*
+
+setelah itu ketikkan perintah 
+ ```
+ cd ../templates
+nano app.conf
+```
+
+
 
