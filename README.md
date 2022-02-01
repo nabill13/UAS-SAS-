@@ -108,7 +108,10 @@ Install YII 2.0 on LXC_YII dengan ansible
 
 
 copy LXC sebelumnya, seperti arsitektur 
+
 *picture*
+
+
 
 setelah itu tulis perintah berikut 
 ```
