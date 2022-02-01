@@ -42,6 +42,9 @@ sudo lxc-create -n lxc_php5_2 -t download -- --dist debian --release buster --ar
 sudo lxc-create -n lxc_mariadb -t download -- --dist debian --release buster --arch amd64 --force-cache --no-validate --server images.linuxcontainers.org
 ```
 
+Kemudian, kita perlu melakukan beberapa konfigurasi untuk mengatur ip statis dan menginstall ssh server di setiap lxc. kita melakukan beberapa konfigurasi ip seperti gambar berikut :
+
+*picture*
 
 <img width="657" alt="0" src="https://user-images.githubusercontent.com/92876637/152006200-1a568439-3245-40a1-a85d-371bfd4cf75e.PNG">
 
@@ -52,16 +55,23 @@ sudo lxc-create -n lxc_mariadb -t download -- --dist debian --release buster --a
 
 <img width="484" alt="3" src="https://user-images.githubusercontent.com/92876637/151708022-90774ddd-a35b-4022-bbc5-4d13e0aa9c32.PNG">
 
-Pertama kita buat folder di direktori ansible sudo mkdir -p ~/ansible/uas untuk menampung semua script konfigurasi yang akan kita gunakan dalam tugas akhir ini.
+Install nginx pada VM, dan setting codeigniter untuk lxc_php5_1 dan lxc_php5_2 dengan IP yang telah di atur
 
-Di direktori tubes, buat direktori untuk menampung semua skrip di setiap framework yang akan diinstal dalam proyek ini.
 
-Buat direktori laravel di direktori sudo mkdir laravel untuk mengakomodasi skrip yang memungkinkan untuk menginstal laravel framewrok.
+kemudian, buat ansible codeiginiter dengan nama deploy-app.yml yang berisi domain container yang digunakan.
+
+<img width="481" alt="6" src="https://user-images.githubusercontent.com/92876637/151708105-684fbfdf-df88-441e-9aa0-7acd476eb0a3.PNG">
+
 
 ```
-sudo mkdir -p laravel/tasks
-sudo mkdir -p laravel/handlers
-sudo mkdir -p laravel/templates
+- hosts: ci
+  vars:
+    git_url: 'https://github.com/aldonesia/sas-ci'
+    destdir: '/var/www/html/ci'
+    domain: 'lxc_php5_1.dev'
+    domain: 'lxc_php5_2.dev'
+  roles:
+    - app
 ```
 
 *picture*
