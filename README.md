@@ -806,8 +806,7 @@ sudo mkdir -p codeigniter/templates
   action: service name=nginx state=restarted
   ```
 
- - In the templates directory, create some file named app.conf  . Then type the script as below.
-
+ - Pada templates directory, buat beberapa file bernama app.conf . Kemudian ketikkan script seperti di bawah ini :
       ```
       server {
         listen 80;
@@ -826,7 +825,7 @@ sudo mkdir -p codeigniter/templates
       }
       ```
 
-  - create a db directory in the roles directory `sudo mkdir db` to accommodate an ansible script to install db framewrok.  
+  - buat sebuah db directory pada roles directory `sudo mkdir db` untuk akomodaikan sebuah ansible script saat install db framewrok.  
     - In the db dircetory, we need 3 folders again to accommodate tasks, handlers and templates scripts that will be use in the db installation.
 
       ```
