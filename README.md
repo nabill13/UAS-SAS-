@@ -42,9 +42,6 @@ sudo lxc-create -n lxc_php5_2 -t download -- --dist debian --release buster --ar
 sudo lxc-create -n lxc_mariadb -t download -- --dist debian --release buster --arch amd64 --force-cache --no-validate --server images.linuxcontainers.org
 ```
 
-Kemudian, kita perlu melakukan beberapa konfigurasi untuk mengatur ip statis dan menginstall ssh server di setiap lxc. kita melakukan beberapa konfigurasi ip seperti gambar berikut :
-
-*picture*
 
 <img width="657" alt="0" src="https://user-images.githubusercontent.com/92876637/152006200-1a568439-3245-40a1-a85d-371bfd4cf75e.PNG">
 
@@ -55,33 +52,172 @@ Kemudian, kita perlu melakukan beberapa konfigurasi untuk mengatur ip statis dan
 
 <img width="484" alt="3" src="https://user-images.githubusercontent.com/92876637/151708022-90774ddd-a35b-4022-bbc5-4d13e0aa9c32.PNG">
 
-Install nginx pada VM, dan setting codeigniter untuk lxc_php5_1 dan lxc_php5_2 dengan IP yang telah di atur
+Pertama kita buat folder di direktori ansible sudo mkdir -p ~/ansible/uas untuk menampung semua script konfigurasi yang akan kita gunakan dalam tugas akhir ini.
 
+Di direktori tubes, buat direktori untuk menampung semua skrip di setiap framework yang akan diinstal dalam proyek ini.
 
-kemudian, buat ansible codeiginiter dengan nama deploy-app.yml yang berisi domain container yang digunakan.
-
-<img width="481" alt="6" src="https://user-images.githubusercontent.com/92876637/151708105-684fbfdf-df88-441e-9aa0-7acd476eb0a3.PNG">
-
+Buat direktori laravel di direktori sudo mkdir laravel untuk mengakomodasi skrip yang memungkinkan untuk menginstal laravel framewrok.
 
 ```
-- hosts: ci
+sudo mkdir -p laravel/tasks
+sudo mkdir -p laravel/handlers
+sudo mkdir -p laravel/templates
+```
+
+Di direktori task, buat beberapa file bernama main.yml. Kemudian ketikkan script seperti di bawah ini
+```
+---
+- name: delete apt chache
+  become: yes
+  become_user: root
+  become_method: su
+  command: rm -vf /var/lib/apt/lists/*
+
+- name: Download and install Composer
+  shell: curl -sS https://getcomposer.org/installer | php
+  args:
+    chdir: /usr/src/
+    creates: /usr/local/bin/composer
+    warn: false
+  become: yes
+
+- name: Add Composer to global path
+  copy:
+    dest: /usr/local/bin/composer
+    group: root
+    mode: '0755'
+    owner: root
+    src: /usr/src/composer.phar
+    remote_src: yes
+  become: yes
+
+- name: Ansible delete file create-project
+  file:
+    path: /var/www/html/laravel
+    state: absent
+
+- name: composer create-project
+  shell: /usr/local/bin/composer create-project laravel/laravel /var/www/html/laravel --prefer-dist --no-interaction
+
+- name: Copy .env.template
+  template:
+    src=templates/env.template
+    dest=/var/www/html/laravel/.env
+
+- name: composer
+  shell: cd /var/www/html/laravel; /usr/local/bin/composer install  --no-interaction
+
+- name: key
+  shell: /usr/bin/php7.4 /var/www/html/laravel/artisan key:generate
+
+- name: chmod
+  become: yes
+  become_user: root
+  become_method: su
+  command: chmod 777 -R /var/www/html/laravel/storage
+
+- name: Copy lv.conf
+  template:
+    src=templates/lv.conf
+    dest=/etc/nginx/sites-available/{{ domain }}
   vars:
-    git_url: 'https://github.com/aldonesia/sas-ci'
-    destdir: '/var/www/html/ci'
-    domain: 'lxc_php5_1.dev'
-    domain: 'lxc_php5_2.dev'
-  roles:
-    - app
+    servername: '{{ domain }}'
+
+- name: copy php7.conf
+  template:
+    src=templates/php7.conf
+    dest=/etc/php/7.4/fpm/pool.d/www.conf
+
+- name: Symlink lv.conf
+  command: ln -sfn /etc/nginx/sites-available/{{ domain }} /etc/nginx/sites-enabled/{{ domain }}
+  notify:
+    - restart nginx
+
+- name: Write {{ domain }} to /etc/hosts
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '.*{{ domain }}$'
+    line: "127.0.0.1 {{ domain }}"
+    state: present
+
 ```
 
-*picture*
 
+Di direktori handler, buat beberapa file bernama main.yml. Kemudian ketikkan script seperti di bawah ini.
+```
+---
+- name: restart php
+  become: yes
+  become_user: root
+  become_method: su
+  action: service name=php7.4-fpm state=restarted
 
+- name: restart nginx
+  become: yes
+  become_user: root
+  become_method: su
+  action: service name=nginx state=restarted
 
-kemudian, jalankan Ansible
+```
 
-*picture*
+Pada direktori templates, kita akan membuat 3 file script seperti di bawah ini.
 
+env.template
+
+```
+APP_NAME=Landing
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://kelompok12.fpsas
+
+LOG_CHANNEL=stack
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
+
+DB_CONNECTION=mysql
+DB_HOST=10.0.3.100
+DB_PORT=3306
+DB_DATABASE=landing
+DB_USERNAME=admin
+DB_PASSWORD=admin
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+FILESYSTEM_DRIVER=local
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_APP_CLUSTER=mt1
+
+MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+```
 
 
 Install mariadb pada LXC_DB_SERVER dan CodeIgniter 3 pada LXC_CI dengan ansible
