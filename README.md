@@ -1925,7 +1925,7 @@ sudo mkdir -p codeigniter/templates
           state: present
       ```
 
-    - In the handlers directory, buat file bernama main.yml, lalu tulis perintah berikut :
+    - Pada handlers directory, buat file bernama main.yml, lalu tulis perintah berikut :
 
       ```
       ---
@@ -2031,6 +2031,8 @@ sudo mkdir -p codeigniter/templates
     [database]
     lxc_mariadb ansible_host=lxc_mariadb.dev ansible_ssh_user=root ansible_become_pass=akbar
     ```
+    <img width="657" alt="0" src="https://user-images.githubusercontent.com/92932656/152097874-b707b47e-a320-4b3b-98bc-2b5377c683fe.PNG">
+
 
   - Buat file dengan nama install-codeigniter.yml `nano install-codeigniter.yml` dan tulis perintah seperti di bawah ini:
 
@@ -2123,6 +2125,8 @@ sudo mkdir -p codeigniter/templates
         - db
         - pma
     ```
+    
+<img width="480" alt="install mariadb" src="https://user-images.githubusercontent.com/92932656/152098277-f1736b7c-5ee4-40cb-aeab-f8580c00d2f0.PNG">
 
   - Buat file nama install-wordpress.yml `nano install-wordpress.yml` dan tulis perintah seperti di bawah ini:
 
@@ -2168,6 +2172,8 @@ sudo mkdir -p codeigniter/templates
       roles:
         - wordpress
     ```
+
+<img width="481" alt="install wp" src="https://user-images.githubusercontent.com/92932656/152098315-ff622a18-9520-4ea0-9ed7-6ced6ac10ce6.PNG">
 
   - Buat file dengan nama install-yii.yml `nano install-yii.yml` dan tulis perintah seperti di bawah ini:
 
@@ -2228,6 +2234,7 @@ sudo mkdir -p codeigniter/templates
         - yii
     ```
 
+<img width="482" alt="install yii" src="https://user-images.githubusercontent.com/92932656/152098342-5b6ee3d0-0cb2-4ab1-9784-2bb00d3c4ee8.PNG">
 
 
 - Kemudian untuk yang terakhir, kita perlu mengkonfigurasi pengaturan nginx. Masuk ke situs-tersedia `cd /etc/nginx/sites-available` dan buat file bernama kelompok02.fpsas. Masukkan file menggunakan `sudo nano kelompok12.fpsas` dan ketik script seperti di bawah ini untuk pengaturan konfigurasi nginx include load balancer.
