@@ -1770,8 +1770,8 @@ sudo mkdir -p codeigniter/templates
          * @package WordPress
          */
         
-        define( 'WP_HOME', 'http://news.kelompok12.fpsas' );
-        define( 'WP_SITEURL', 'http://news.kelompok12.fpsas' );
+        define( 'WP_HOME', 'http://news.kelompok02.fpsas' );
+        define( 'WP_SITEURL', 'http://news.kelompok02.fpsas' );
         
         // ** MySQL settings - You can get this info from your web host ** //
         /** The name of the database for WordPress */
@@ -1781,7 +1781,7 @@ sudo mkdir -p codeigniter/templates
         define( 'DB_USER', 'admin' );
         
         /** MySQL database password */
-        define( 'DB_PASSWORD', 'admin' );
+        define( 'DB_PASSWORD', 'eyy' );
         
         /** MySQL hostname */
         define( 'DB_HOST', '10.0.3.100:3306' );
@@ -2002,31 +2002,31 @@ sudo mkdir -p codeigniter/templates
 
     ```
     [laravel]
-    laravel ansible_host=lxc_laravel.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_1L ansible_host=lxc_php7_1L.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_2L ansible_host=lxc_php7_2L.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_4L ansible_host=lxc_php7_4L.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_6L ansible_host=lxc_php7_6L.dev ansible_ssh_user=root ansible_become_pass=akbar
+    laravel ansible_host=lxc_laravel.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_1L ansible_host=lxc_php7_1L.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_2L ansible_host=lxc_php7_2L.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_4L ansible_host=lxc_php7_4L.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_6L ansible_host=lxc_php7_6L.dev ansible_ssh_user=root ansible_become_pass=eyy
     
     [codeigniter]
-    codeigniter ansible_host=lxc_codeigniter.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php5_1 ansible_host=lxc_php5_1.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php5_2 ansible_host=lxc_php5_2.dev ansible_ssh_user=root ansible_become_pass=akbar
+    codeigniter ansible_host=lxc_codeigniter.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php5_1 ansible_host=lxc_php5_1.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php5_2 ansible_host=lxc_php5_2.dev ansible_ssh_user=root ansible_become_pass=eyy
     
     [wordpress]
-    wordpress ansible_host=lxc_wordpress.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_2W ansible_host=lxc_php7_2W.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_3W ansible_host=lxc_php7_3W.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_4W ansible_host=lxc_php7_4W.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_5W ansible_host=lxc_php7_5W.dev ansible_ssh_user=root ansible_become_pass=akbar
+    wordpress ansible_host=lxc_wordpress.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_2W ansible_host=lxc_php7_2W.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_3W ansible_host=lxc_php7_3W.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_4W ansible_host=lxc_php7_4W.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_5W ansible_host=lxc_php7_5W.dev ansible_ssh_user=root ansible_become_pass==eyy
     
     [yii]
     yii ansible_host=lxc_yii.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_1Y ansible_host=lxc_php7_1Y.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_2Y ansible_host=lxc_php7_2Y.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_4Y ansible_host=lxc_php7_4Y.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_5Y ansible_host=lxc_php7_5Y.dev ansible_ssh_user=root ansible_become_pass=akbar
-    lxc_php7_6Y ansible_host=lxc_php7_6Y.dev ansible_ssh_user=root ansible_become_pass=akbar
+    lxc_php7_1Y ansible_host=lxc_php7_1Y.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_2Y ansible_host=lxc_php7_2Y.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_4Y ansible_host=lxc_php7_4Y.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_5Y ansible_host=lxc_php7_5Y.dev ansible_ssh_user=root ansible_become_pass=eyy
+    lxc_php7_6Y ansible_host=lxc_php7_6Y.dev ansible_ssh_user=root ansible_become_pass=eyy
     
     [database]
     lxc_mariadb ansible_host=lxc_mariadb.dev ansible_ssh_user=root ansible_become_pass=akbar
@@ -2070,7 +2070,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: laravel
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_laravel.dev'
       roles:
         - php
@@ -2079,7 +2079,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_1L
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_1L.dev'
       roles:
         - php
@@ -2088,7 +2088,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_2L
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_2L.dev'
       roles:
         - php
@@ -2097,7 +2097,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_4L
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_4L.dev'
       roles:
         - php
@@ -2106,7 +2106,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_6L
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_6L.dev'
       roles:
         - php
@@ -2119,7 +2119,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: database
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_mariadb.dev'
       roles:
         - db
@@ -2135,7 +2135,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: wordpress
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_wordpress.dev'
       roles:
         - wordpress
@@ -2143,7 +2143,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_2W
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_2W.dev'
       roles:
         - wordpress
@@ -2151,7 +2151,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_3W
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_3W.dev'
       roles:
         - wordpress
@@ -2159,7 +2159,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_4W
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_4W.dev'
       roles:
         - wordpress
@@ -2167,7 +2167,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_5W
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_5W.dev'
       roles:
         - wordpress
@@ -2182,7 +2182,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: yii
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_yii.dev'
       roles:
         - php
@@ -2191,7 +2191,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_1Y
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_1Y.dev'
       roles:
         - php
@@ -2200,7 +2200,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_2Y
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_2Y.dev'
       roles:
         - php
@@ -2209,7 +2209,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_4Y
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_4Y.dev'
       roles:
         - php
@@ -2218,7 +2218,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_5Y
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_5Y.dev'
       roles:
         - php
@@ -2227,7 +2227,7 @@ sudo mkdir -p codeigniter/templates
     - hosts: lxc_php7_6Y
       vars:
         username: 'admin'
-        password: 'admin'
+        password: 'eyy'
         domain: 'lxc_php7_6Y.dev'
       roles:
         - php
@@ -2273,7 +2273,7 @@ sudo mkdir -p codeigniter/templates
           listen 80;
           listen [::]:80;
   
-          server_name kelompok12.fpsas;
+          server_name kelompok02.fpsas;
   
           root /var/www/html;
           index index.html;
@@ -2303,7 +2303,7 @@ sudo mkdir -p codeigniter/templates
           listen 80;
           listen [::]:80;
   
-          server_name news.kelompok12.fpsas;
+          server_name news.kelompok02.fpsas;
   
           root /var/www/html;
           index index.html;
