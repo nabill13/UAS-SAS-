@@ -44,14 +44,6 @@ sudo lxc-create -n lxc_mariadb -t download -- --dist debian --release buster --a
 
 <img width="516" alt="00" src="https://user-images.githubusercontent.com/92932656/152089760-af95f4dd-a6b5-4644-9531-31673d78c5cc.PNG">
 
-<img width="657" alt="0" src="https://user-images.githubusercontent.com/92876637/152006200-1a568439-3245-40a1-a85d-371bfd4cf75e.PNG">
-
-<img width="954" alt="1" src="https://user-images.githubusercontent.com/92876637/151707964-2eec3c05-7e6f-4ac6-a228-85b5bce20cc0.PNG">
-
-<img width="238" alt="4" src="https://user-images.githubusercontent.com/92876637/151708030-739ad761-34d0-4d08-a562-721e05fd0f92.PNG">   <img width="215" alt="5" src="https://user-images.githubusercontent.com/92876637/151708092-b3dbf2f1-ffad-4ecc-bd11-b4f6ab280dac.PNG">
-
-
-<img width="484" alt="3" src="https://user-images.githubusercontent.com/92876637/151708022-90774ddd-a35b-4022-bbc5-4d13e0aa9c32.PNG">
 
 Pertama kita buat folder di direktori ansible sudo mkdir -p ~/ansible/uas untuk menampung semua script konfigurasi yang akan kita gunakan dalam tugas akhir ini.
 
@@ -681,14 +673,6 @@ Di direktori task, buat beberapa file bernama main.yml. Kemudian ketikkan script
 ```
 
 
-
-
-
-
-
-
-
-
 buat directory codeigniter dengan roles directory ```sudo mkdir codeigniter``` untuk mengakomidasikan sebuah ansible script untuk menginstall codeigniter framework.
 
 - Pada direktori codeigniter, kita membutuhkan 3 folder lagi untuk menampung tasks, handler dan script template yang akan digunakan dalam menginstall codeigniter.
@@ -698,6 +682,7 @@ sudo mkdir -p codeigniter/tasks
 sudo mkdir -p codeigniter/handlers
 sudo mkdir -p codeigniter/templates
 ```
+
 - Pada Taks directory, buat beberapa file bernama main.yml. dengan script seperti di bawah ini :
 ```
 ---
@@ -1060,7 +1045,7 @@ sudo mkdir -p codeigniter/templates
       [mariadb]
       ```
 
-    - lalu, kita membuat sebuah folder dengan nama pma untuk menginstall pma dengan roles pma. pada roles, kita harus membuat 3 directory dengan nama tasks, handlers dan      templates.
+    - lalu, kita membuat sebuah folder dengan nama pma untuk menginstall pma dengan roles pma. pada roles, kita harus membuat 3 directory dengan nama tasks, handlers dan       templates.
 
       - pada tasks directory, buat file bernama main.yml, lalu tulis perintah berikut :
      
