@@ -42,6 +42,7 @@ sudo lxc-create -n lxc_php5_2 -t download -- --dist debian --release buster --ar
 sudo lxc-create -n lxc_mariadb -t download -- --dist debian --release buster --arch amd64 --force-cache --no-validate --server images.linuxcontainers.org
 ```
 
+<img width="516" alt="00" src="https://user-images.githubusercontent.com/92932656/152089760-af95f4dd-a6b5-4644-9531-31673d78c5cc.PNG">
 
 <img width="657" alt="0" src="https://user-images.githubusercontent.com/92876637/152006200-1a568439-3245-40a1-a85d-371bfd4cf75e.PNG">
 
