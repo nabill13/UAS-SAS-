@@ -42,10 +42,10 @@ sudo lxc-create -n lxc_php5_2 -t download -- --dist debian --release buster --ar
 sudo lxc-create -n lxc_mariadb -t download -- --dist debian --release buster --arch amd64 --force-cache --no-validate --server images.linuxcontainers.org
 ```
 
-<img width="516" alt="00" src="https://user-images.githubusercontent.com/92932656/152089760-af95f4dd-a6b5-4644-9531-31673d78c5cc.PNG">
-
 
 Pertama kita buat folder di direktori ansible sudo mkdir -p ~/ansible/uas untuk menampung semua script konfigurasi yang akan kita gunakan dalam tugas akhir ini.
+
+<img width="516" alt="00" src="https://user-images.githubusercontent.com/92932656/152089760-af95f4dd-a6b5-4644-9531-31673d78c5cc.PNG">
 
 Di direktori tubes, buat direktori untuk menampung semua skrip di setiap framework yang akan diinstal dalam proyek ini.
 
