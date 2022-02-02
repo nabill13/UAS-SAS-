@@ -162,7 +162,7 @@ APP_NAME=Landing
 APP_ENV=local
 APP_KEY=
 APP_DEBUG=true
-APP_URL=http://kelompok12.fpsas
+APP_URL=http://kelompok2.fpsas
 
 LOG_CHANNEL=stack
 LOG_DEPRECATIONS_CHANNEL=null
@@ -173,7 +173,7 @@ DB_HOST=10.0.3.100
 DB_PORT=3306
 DB_DATABASE=landing
 DB_USERNAME=admin
-DB_PASSWORD=admin
+DB_PASSWORD=eyy
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
@@ -1843,9 +1843,9 @@ sudo mkdir -p codeigniter/templates
         require_once ABSPATH . 'wp-settings.php';
         ```
 
-  - create a yii directory in the roles directory `sudo mkdir yii` to accommodate an ansible script to install yii framewrok.  
+  - buat directory yii dengan roles directory `sudo mkdir yii` untuk menyambungkan ansible script saat menginstall yii framewrok.  
 
-    - In the yii directory, we need 3 folders again to accommodate tasks, handlers and templates scripts that will be use in the yii installation.
+    - Pada directory yii, kita membuat 3 folder lagi yang berisi tasks, handlers and templates script yang akan digunakan dalam instalasi yii
 
       ```
       sudo mkdir -p yii /tasks
